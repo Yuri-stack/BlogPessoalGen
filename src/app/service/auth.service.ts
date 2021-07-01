@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserLogin } from './../model/UserLogin';
 import { User } from './../model/User';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,15 @@ export class AuthService {
 
   cadastrar(user: User){
     return this.http.post<User>('https://backendblogpessoal.herokuapp.com/cadastrar', user)
+  }
+
+  isLogged(){
+    let logged = false  // let ok = false
+
+    if(environment.token != ''){
+      logged = true     // let ok = true
+    }
+
+    return logged       // return ok
   }
 }
