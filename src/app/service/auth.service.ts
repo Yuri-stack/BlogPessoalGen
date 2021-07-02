@@ -17,8 +17,8 @@ export class AuthService {
     return this.http.post<UserLogin>('https://backendblogpessoal.herokuapp.com/usuarios/logar', userLogin)
   }
 
-  cadastrar(user: User){
-    return this.http.post<User>('https://backendblogpessoal.herokuapp.com/cadastrar', user)
+  cadastrar(user: User): Observable<User>{
+    return this.http.post<User>('https://backendblogpessoal.herokuapp.com/usuarios/cadastrar', user)
   }
 
   isLogged(){

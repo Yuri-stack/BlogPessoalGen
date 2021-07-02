@@ -1,1 +1,81 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <div class="row bg-secondary d-flex align-items-center">
+        <div class="col-md-6">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 text-white">
+                    <h1 class="fs-54">Welcome!</h1>
+                    <h5 class="fs-18">Open Your Mind</h5>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <button class="btn btn-light mr-2" data-toggle="modal" data-target="#newPost">New Post</button>
+                    <a class="btn btn-outline-light" href="#posts">See Post</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <img src="../../assets/Group Chat-cuate.png" width="500px" height="500px">
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5 mt-5" id="posts">
+    <nav>
+        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+          <a class="nav-link active text-secondary" id="nav-allPosts-tab" data-toggle="tab" href="#allPosts" role="tab" aria-controls="nav-allPosts" aria-selected="true">All Posts</a>
+
+          <a class="nav-link text-secondary" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">My Posts</a>
+
+          <a class="nav-link text-secondary font-weight-bold" id="nav-postsTheme-tab" data-toggle="tab" href="#postsTheme" role="tab" aria-controls="nav-postsTheme" aria-selected="false">Posts for Theme</a>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="nav-allPosts-tab">All Posts</div>
+
+        <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">My Posts</div>
+
+        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="postsTheme-tab">Posts for theme</div>
+    </div>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="newPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">New Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Type the title">
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <textarea class="form-control" name="text" id="text" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="theme">Choose a Theme or <a href="">register a new</a>:</label>
+                <select class="form-control" name="theme" id="theme">
+                    <option value="">Temas</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success">Publish</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
