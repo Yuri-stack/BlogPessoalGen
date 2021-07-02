@@ -12,11 +12,11 @@
             <div class="row d-flex justify-content-center mt-4 mb-5">
                 <div class="com-md-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="description" placeholder="Type theme description">
+                        <input [(ngModel)]='theme.descricao' type="text" class="form-control" id="description" placeholder="Type theme description">
                     </div>
                     
                     <div class="d-flex justify-content-center">
-                        <div class="btn btn-light">Register</div>
+                        <div class="btn btn-light" (click)='register()'>Register</div>
                     </div>
 
                 </div>
@@ -39,32 +39,22 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" class="text-right">Controls</th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
+                  <tr *ngFor='let item of listThemes'>
+                    <th>{{ item.id }}</th>
+                    <td>{{ item.descricao }}</td>
+                    <td class="d-flex justify-content-end">
+                        <button class="btn btn-info mr-3">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                   </tr>
                 </tbody>
-              </table>
-
+            </table>
         </div>
     </div>
 </div>

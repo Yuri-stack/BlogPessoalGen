@@ -17,6 +17,7 @@ export class AuthService {
     return this.http.post<UserLogin>('https://backendblogpessoal.herokuapp.com/usuarios/logar', userLogin)
   }
 
+  // Deve usar o link do Back Local ou hospedado
   cadastrar(user: User): Observable<User>{
     return this.http.post<User>('https://backendblogpessoal.herokuapp.com/usuarios/cadastrar', user)
   }

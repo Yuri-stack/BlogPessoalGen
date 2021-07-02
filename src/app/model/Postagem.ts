@@ -9,3 +9,5 @@ export class Postagem{
     public usuario: User
     public tema: Tema
 }
+
+// Tem que ser igual a sua Models do BackEnd
