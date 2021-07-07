@@ -27,18 +27,83 @@
         <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
           <a class="nav-link active text-secondary" id="nav-allPosts-tab" data-toggle="tab" href="#allPosts" role="tab" aria-controls="nav-allPosts" aria-selected="true">All Posts</a>
 
-          <a class="nav-link text-secondary" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">My Posts</a>
+          <a (click)='findByIdUser()' class="nav-link text-secondary" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">My Posts</a>
 
           <a class="nav-link text-secondary font-weight-bold" id="nav-postsTheme-tab" data-toggle="tab" href="#postsTheme" role="tab" aria-controls="nav-postsTheme" aria-selected="false">Posts for Theme</a>
         </div>
     </nav>
 
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="nav-allPosts-tab">All Posts</div>
+    <div class="tab-content mt-5" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="nav-allPosts-tab">
 
-        <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">My Posts</div>
+            <div class="card-columns">
 
-        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="postsTheme-tab">Posts for theme</div>
+                <div class="card text-center" *ngFor='let item of listPost'>
+                    <div class="card-body">
+                      <h5 class="card-title m-0">{{ item.titulo }}</h5>
+                      <small  class="text-muted">Theme: {{ item.tema.descricao }}</small>
+                      <p class="card-text mt-3">{{ item.texto }}</p>
+                      <p class="card-text">
+                          <small class="text-muted">
+                              {{ item.data | date: 'dd/MM/yyyy'}} at
+                              {{ item.data | date: 'HH:mm' }}
+                          </small>
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">by: {{ item.usuario.nome }}</small>
+                    </p>
+                    </div>
+                  </div>
+
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">
+
+            <div class="card-columns">
+
+                <div class="card text-center" *ngFor='let item of user.postagem'>
+                    <div class="card-body">
+                      <h5 class="card-title m-0">{{ item.titulo }}</h5>
+                      <small  class="text-muted">Theme: {{ item.tema.descricao }}</small>
+                      <p class="card-text mt-3">{{ item.texto }}</p>
+                      <p class="card-text">
+                          <small class="text-muted">
+                              {{ item.data | date: 'dd/MM/yyyy'}} at
+                              {{ item.data | date: 'HH:mm' }}
+                          </small>
+                      </p>
+                    </div>
+                  </div>
+
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="postsTheme-tab">
+
+            <div class="card-columns" *ngFor='let theme of listTheme'>
+
+                <div class="card text-center" *ngFor='let item of theme.postagem'>
+                    <div class="card-body">
+                      <h5 class="card-title m-0">{{ item.titulo }}</h5>
+                      <p class="card-text mt-3">{{ item.texto }}</p>
+                      <p class="card-text">
+                          <small class="text-muted">
+                              {{ item.data | date: 'dd/MM/yyyy'}} at
+                              {{ item.data | date: 'HH:mm' }}
+                          </small>
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">by: {{ item.usuario.nome }}</small>
+                    </p>
+                    </div>
+                  </div>
+
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -57,23 +122,27 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Type the title">
+                <input [(ngModel)]='post.titulo' type="text" class="form-control" id="title" placeholder="Type the title">
             </div>
             <div class="form-group">
                 <label for="text">Text</label>
-                <textarea class="form-control" name="text" id="text" rows="3"></textarea>
+                <textarea [(ngModel)]='post.texto' class="form-control" name="text" id="text" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label for="theme">Choose a Theme or <a data-dismiss="modal" routerLink='/tema'>register a new</a>:</label>
-                <select class="form-control" name="theme" id="theme">
-                    <option value="">Temas</option>
+
+                <select class="form-control" name="theme" id="theme" [(ngModel)]="idTheme" (change)='findByIdTheme()'>
+                    <option *ngFor='let item of listTheme' value="{{ item.id }}">
+                        {{ item.descricao }}
+                    </option>
                 </select>
+
             </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-success">Publish</button>
+          <button type="button" class="btn btn-success" (click)='publish()' data-dismiss="modal">Publish</button>
         </div>
 
       </div>
