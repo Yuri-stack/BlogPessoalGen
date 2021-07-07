@@ -53,7 +53,7 @@
                         <small class="text-muted">by: {{ item.usuario.nome }}</small>
                     </p>
                     </div>
-                  </div>
+                </div>
 
             </div>
 
@@ -74,6 +74,10 @@
                               {{ item.data | date: 'HH:mm' }}
                           </small>
                       </p>
+
+                      <a [routerLink]="['/postagem-edit', item.id]" class="text-info mr-3" href="">Edit</a>
+                      <a [routerLink]="['/postagem-delete', item.id]" class="text-danger" href="">Delete</a>
+
                     </div>
                   </div>
 
@@ -136,7 +140,6 @@
                         {{ item.descricao }}
                     </option>
                 </select>
-
             </div>
         </div>
 
