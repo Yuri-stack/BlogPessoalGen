@@ -20,9 +20,22 @@ export class PostService {
     return this.http.get<Postagem[]>('https://backendblogpessoal.herokuapp.com/postagens', this.token)
   }
 
-  // postPostagem(postagem: Postagem)
-  createPost(postagem: Postagem): Observable<Postagem>{
-    return this.http.post<Postagem>('https://backendblogpessoal.herokuapp.com/postagens', postagem, this.token)
+  getByIdPost(id: number): Observable<Postagem>{
+    return this.http.get<Postagem>(`https://backendblogpessoal.herokuapp.com/postagens/${id}`, this.token)
   }
 
+  // postPostagem(postagem: Postagem)
+  createPost(post: Postagem): Observable<Postagem>{
+    return this.http.post<Postagem>('https://backendblogpessoal.herokuapp.com/postagens', post, this.token)
+  }
+
+  // putPostagem()
+  updatePost(post: Postagem): Observable<Postagem>{
+    return this.http.put<Postagem>('https://backendblogpessoal.herokuapp.com/postagens', post, this.token)
+  }
+
+  // deletePostagem()
+  deletePost(id: number){
+    return this.http.delete<Postagem>(`https://backendblogpessoal.herokuapp.com/postagens/${id}`, this.token)
+  }
 }
