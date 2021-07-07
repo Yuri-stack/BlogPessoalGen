@@ -17,6 +17,7 @@ import { User } from '../model/User';
 export class HomeComponent implements OnInit {
 
   post: Postagem = new Postagem()
+  listPost: Postagem[]
   
   theme: Tema = new Tema()
   listTheme: Tema[]
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.getAllThemes()
+    this.getAllPost()
   }
 
   getAllThemes(){
@@ -52,6 +54,18 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  getAllPost(){
+    this.postService.getAllPost().subscribe((resp: Postagem[]) => {
+      this.listPost = resp
+    })
+  }
+
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      this.user = resp
+    })
+  }
+
   // publicar()
   publish(){
     this.theme.id = this.idTheme
@@ -60,12 +74,12 @@ export class HomeComponent implements OnInit {
     this.user.id = this.idUser
     this.post.usuario = this.user
 
-    console.log(this.post)
-
     this.postService.createPost(this.post).subscribe((resp: Postagem) => {
       this.post = resp
       alert('Post successfully')
+
       this.post = new Postagem()
+      this.getAllPost()
     })
 
   }
