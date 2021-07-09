@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
       this.router.navigate(['/home'])
     }, erro => {
-      this.alerts.showAlertDanger('Usuário ou Senhas incorretos')
+      this.alerts.showAlertDanger('Incorrect username or passwords')
     })
   }
 

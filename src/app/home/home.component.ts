@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   user: User = new User()
   idUser = environment.id
 
+  key = 'data'  //  indicando que vamos ordernar pela Data
+  reverse = true
+
   constructor(
     private router: Router,
     private postService: PostService,
