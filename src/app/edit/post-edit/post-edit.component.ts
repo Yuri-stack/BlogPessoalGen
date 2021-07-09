@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Postagem } from 'src/app/model/Postagem';
 import { Tema } from 'src/app/model/Tema';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { PostService } from 'src/app/service/post.service';
 import { ThemeService } from 'src/app/service/theme.service';
 import { environment } from 'src/environments/environment.prod';
@@ -24,7 +25,8 @@ export class PostEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private postService: PostService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
@@ -32,6 +34,7 @@ export class PostEditComponent implements OnInit {
     window.scroll(0,0)
 
     if(environment.token == ''){
+      this.alerts.showAlertInfo("Your session has expired, please login")
       this.router.navigate(['/entrar'])
     }
 
@@ -64,7 +67,7 @@ export class PostEditComponent implements OnInit {
 
     this.postService.updatePost(this.post).subscribe((resp: Postagem) => {
       this.post = resp
-      alert('Post updated successfully')
+      this.alerts.showAlertSuccess('Post updated successfully')
       this.router.navigate(['/home'])
     })
   }

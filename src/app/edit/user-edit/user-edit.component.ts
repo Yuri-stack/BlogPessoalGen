@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -19,13 +20,15 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
 
     if(environment.token == ''){
+      this.alerts.showAlertInfo("Your session has expired, please login")
       this.router.navigate(['/entrar'])
     }
 
@@ -52,13 +55,13 @@ export class UserEditComponent implements OnInit {
     this.user.tipo = this.role
 
     if(this.user.senha != this.password){
-      alert("Incorrect passwords")
+      this.alerts.showAlertDanger("Incorrect passwords")
     }else{
       this.authService.cadastrar(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/home'])
 
-        alert("User Updated Successfully, make your login again")
+        this.alerts.showAlertSuccess("User Updated Successfully, make your login again")
 
         environment.token = ''
         environment.nome = ''

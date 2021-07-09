@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { PostService } from '../service/post.service';
 import { ThemeService } from '../service/theme.service';
 import { AuthService } from '../service/auth.service';
+import { AlertsService } from '../service/alerts.service';
 
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -30,13 +31,15 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
 
     if(environment.token == ''){
+      this.alerts.showAlertInfo("Your session has expired, please login")
       this.router.navigate(['/entrar'])
     }
 
@@ -78,7 +81,8 @@ export class HomeComponent implements OnInit {
 
     this.postService.createPost(this.post).subscribe((resp: Postagem) => {
       this.post = resp
-      alert('Post successfully')
+
+      this.alerts.showAlertSuccess('Post successfully')
 
       this.post = new Postagem()
       this.getAllPost()
