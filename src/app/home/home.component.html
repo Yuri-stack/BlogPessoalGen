@@ -36,6 +36,18 @@
     <div class="tab-content mt-5" id="nav-tabContent">
         <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="nav-allPosts-tab">
 
+            <div class="row d-flex justify-content-center mt-5 mb-5">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            [(ngModel)]='titlePost' (keyup)='findByTitlePost()'
+                            class="form-control" id="title" 
+                            placeholder="Type a post title for searching">
+                    </div>
+                </div>
+            </div>
+
             <div class="card-columns">
 
                 <div class="card text-center" 
@@ -89,7 +101,18 @@
 
         </div>
 
-        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="postsTheme-tab">
+        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="nav-postsTheme-tab">
+
+            <div class="row d-flex justify-content-center mt-5 mb-5">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            [(ngModel)]='titleTheme' (keyup)='findByTheme()'
+                            class="form-control" id="title" 
+                            placeholder="Type a Theme for searching">
+                    </div>
+                </div>
 
             <div class="card-columns" 
                 *ngFor='let theme of listTheme | orderBy : key : reverse'>

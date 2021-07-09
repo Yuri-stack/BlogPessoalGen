@@ -19,10 +19,12 @@ export class HomeComponent implements OnInit {
 
   post: Postagem = new Postagem()
   listPost: Postagem[]
+  titlePost: string
   
   theme: Tema = new Tema()
   listTheme: Tema[]
   idTheme: number
+  titleTheme: string
 
   user: User = new User()
   idUser = environment.id
@@ -68,6 +70,28 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  // findByTituloPostagem()
+  findByTitlePost(){
+    if(this.titlePost == ''){
+      this.getAllPost()
+    }else{
+      this.postService.getByTitlePost(this.titlePost).subscribe((resp: Postagem[]) => {
+        this.listPost = resp
+      })
+    }
+  }
+
+  // findByNomeTema()
+  findByTheme(){
+    if(this.titleTheme == ''){
+      this.getAllThemes()
+    }else{
+      this.themeService.getByTheme(this.titleTheme).subscribe((resp: Tema[]) => {
+        this.listTheme = resp
+      })
+    }
+  }
+    
   findByIdUser(){
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       this.user = resp
