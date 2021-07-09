@@ -124,6 +124,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "blogPessoal"
+    }
+  },
+  "defaultProject": "blogPessoal",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    }
+  }
 }
