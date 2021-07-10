@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     private themeService: ThemeService,
-    private authService: AuthService,
+    public authService: AuthService,
     private alerts: AlertsService
   ) { }
 

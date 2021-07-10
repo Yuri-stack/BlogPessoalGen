@@ -28,6 +28,11 @@ export class ThemeComponent implements OnInit {
       this.router.navigate(['/entrar'])
     }
 
+    if(environment.tipo != 'admin'){
+      this.alerts.showAlertInfo("You need be a Admin for access this function")
+      this.router.navigate(['/home'])
+    }
+
     this.findAll()
   }
 

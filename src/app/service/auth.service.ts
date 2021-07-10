@@ -27,12 +27,14 @@ export class AuthService {
   }
 
   isLogged(){
-    let logged = false  // let ok = false
+    let logged = false                          // let ok = false
+    if(environment.token != '') logged = true   // let ok = true
+    return logged                               // return ok
+  }
 
-    if(environment.token != ''){
-      logged = true     // let ok = true
-    }
-
-    return logged       // return ok
+  isAdmin(){
+    let admin = false                             // let ok = false
+    if(environment.tipo == 'admin') admin = true  // let ok = true
+    return admin                                  // return ok
   }
 }
