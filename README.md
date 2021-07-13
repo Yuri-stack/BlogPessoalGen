@@ -37,7 +37,7 @@
 
 <div>
     <p align="center">
-        Construction of a Personal Blog using Angular, a project developed at Generation's Bootcampo with the aim of learning.
+        Construction of a Personal Blog using Angular, a project developed at Generation's Bootcamp with the aim of learning.
     </p>
 </div>
 
