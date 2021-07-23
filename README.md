@@ -1,12 +1,13 @@
 <h1 align="center">
-    <br><img  src="https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg"  alt="Logo"  width="360"><br><br>
+    <img  src="https://angular.io/assets/images/logos/angular/angular.svg"  alt="Logo"  width="240">
+    <br><br>
     Blog Pessoal Gen
 </h1>
 
 <div>
 <p align="center">
     <a href="https://www.linkedin.com/in/yuri-silva99/" target="_blank">
-        <img src="https://img.shields.io/static/v1?label=Author&message=Yuri&color=00ff99&style=for-the-badge&logo=LinkedIn" alt="Author: Yuri">
+        <img src="https://img.shields.io/static/v1?label=Author&message=Yuri&color=00ba6d&style=for-the-badge&logo=LinkedIn" alt="Author: Yuri">
     </a>
     <a href="#">
         <img src="https://img.shields.io/static/v1?label=Language&message=Typescript&color=blue&style=for-the-badge&logo=Typescript" alt="Language: Typescript">
@@ -14,8 +15,12 @@
     <a href="#">
         <img src="https://img.shields.io/static/v1?label=Language&message=Javascript&color=yellow&style=for-the-badge&logo=JavaScript" alt="Language: Javascript">
     </a>
+  <br>
+    <a  href="#">
+      <img  src="https://img.shields.io/static/v1?label=Framework&message=Angular&color=e23237&style=for-the-badge&logo=Angular"  alt="Language: Angular">
+    </a>
     <a href="#">
-      <img  src="https://img.shields.io/static/v1?label=Language&message=CSS&color=blue&style=for-the-badge&logo=CSS3"  alt="Language: CSS">
+      <img  src="https://img.shields.io/static/v1?label=Language&message=Bootstrap&color=563d7c&style=for-the-badge&logo=Bootstrap"  alt="Language: Bootstrap">
     </a>
 </p>
 
